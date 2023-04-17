@@ -1,0 +1,26 @@
+def cesar(ch,k):
+    ordch = ord(ch)
+    if 65 <= ordch <= 90:
+        first_ord = 65
+        alph = 26
+    elif 97 <= ordch <= 122:
+        first_ord = 97
+        alph = 26
+    elif 1040 <= ordch <= 1071:
+        first_ord = 1040
+        alph = 32
+    elif 1072 <= ordch <= 1103:
+        first_ord = 1072
+        alph = 32
+    else:
+        return(ch)
+    return(chr(first_ord + (ord(ch) - first_ord + k) % alph))
+choice = input('Привет, что ты хочешь сделать? Зашифровать = 0 или дешифровать = 1 ? \n').lower()
+while choice != '0' and choice != '1':
+    choice = input('Что-то не то ты ввёл. Напиши "0" - зашифровать  либо "1" - дешифровать. \n').lower()
+text = input('Введите текст для шифрования.\n')
+k = int(input('На какую величину будем делать сдвиг? \n'))
+if choice == '1':
+    k = - k
+for i in range(len(text)):
+    print(cesar(text[i],k),end ='')
